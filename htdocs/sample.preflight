@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+       <server>
+               <userName>rsanchez</userName>
+               <hostName>chronic3</hostName>
+       </server>
+       <procedure>
+                <projectName>ClearCase</projectName>
+                <procedureName>Preflight</procedureName>            
+               <jobTimeout>7200</jobTimeout>
+       </procedure>
+       <scm>
+           <type>clearcase</type>
+           <path>C:\test\dest1</path>
+           <winCSpecPath>C:\testspec\spec1.txt</winCSpecPath>                      
+       </scm>
+</data>

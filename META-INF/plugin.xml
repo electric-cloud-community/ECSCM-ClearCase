@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <key>ECSCM-ClearCase</key>
+    <version>@PLUGIN_VERSION@</version>
+    <label>ECSCM-ClearCase</label>
+    <description>SCM Plugin for ClearCase</description>
+    <author>Electric Cloud</author>
+    <authorUrl>http://www.electric-cloud.com/support</authorUrl>
+    <category>Source Code Management</category>
+    <commander-version min="3.6"/>
+    <depends min="1.1.0">ECSCM</depends>
+    <help>ECSCM-ClearCase_help.xml</help>
+</plugin>

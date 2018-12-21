@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<editor>
+    <label>Continuous Integration - ClearCase</label>
+    <version>2.1.0</version>
+    <description>A schedule that is enabled for ElectricSentry continuous integration with ClearCase.</description>
+    <formElement>
+        <type>entry</type>
+        <label>View:</label>
+        <property>ClearCaseView</property>
+        <required>1</required>
+        <documentation>The name of a ClearCase dynamic view, used to query and label elements within a ClearCase VOB. (Required)</documentation>
+    </formElement>
+    <formElement>
+        <type>entry</type>
+        <label>Path:</label>
+        <property>ClearCasePath</property>
+        <required>1</required>
+        <documentation>The name of a path within the specified ClearCase view, used to access and label elements within a ClearCase VOB. (Required)</documentation>
+    </formElement>
+    <formElement>
+        <type>entry</type>
+        <label>Branch:</label>
+        <property>ClearCaseBranch</property>
+        <documentation>The name of a branch within the specified ClearCase path. (Required)</documentation>
+        <required>1</required>
+    </formElement>
+    <formElement>
+        <type>entry</type>
+        <label>Quiet time minutes:</label>
+        <property>QuietTimeMinutes</property>
+        <documentation>The number of minutes of no check-in activity required before launching the procedure.</documentation>
+    </formElement>
+    <formElement>
+        <type>checkbox</type>
+        <label>Enabled for ElectricSentry:</label>
+        <property>TriggerFlag</property>
+        <checkedValue>2</checkedValue>
+        <uncheckedValue>0</uncheckedValue>
+        <initiallyChecked>1</initiallyChecked>
+        <documentation>Enable for continuous integration monitoring by ElectricSentry.</documentation>
+    </formElement>
+    <formElement>
+        <property>scheduleDisabled</property>
+        <value>1</value>
+    </formElement>
+</editor>

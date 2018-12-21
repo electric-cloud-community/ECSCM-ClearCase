@@ -1,0 +1,56 @@
+<editor>
+	<help>/commander/pages/@PLUGIN_NAME@/@PLUGIN_KEY@_help?s=Administration&amp;ss=Plugins#CheckoutCode</help>
+    <formElement>
+        <type>entry</type>
+        <label>Configuration Name:</label>
+        <property>config</property>
+        <required>1</required>
+        <documentation>The path name of the configuration to use. (Required)</documentation>
+    </formElement>   
+    <formElement>
+        <type>entry</type>
+        <label>Destination directory:</label>
+        <property>dest</property>
+        <required>1</required>
+        <documentation>A path relative to the job's workspace, where the source tree will be created. (Required)</documentation>
+    </formElement>   
+    <formElement>
+        <type>checkbox</type>
+		<checkedValue>1</checkedValue>
+		<uncheckedValue>0</uncheckedValue>
+        <label>Delete view:</label>
+        <documentation>Delete the view after checkout.</documentation>
+        <property>deleteView</property>
+        <required>0</required>
+    </formElement>	
+    <formElement>
+        <type>entry</type>
+        <label>Configuration specification file name:</label>
+        <property>ConfigSpecFileName</property>
+        <required>1</required>
+        <documentation>The path to a ClearCase configuration specification file. A config spec is the mechanism that a ClearCase View determines what versions of an element that the user accesses. (Required)</documentation>
+    </formElement>
+    <formElement>
+        <type>checkbox</type>
+		<checkedValue>1</checkedValue>
+		<uncheckedValue>0</uncheckedValue>
+        <label>Create network region:</label>
+        <documentation>If checked, create a network region using the '-region' param. (If you provided a region name, you must select this checkbox, otherwise the plugin will ignore the parameter and issue a warning).</documentation>
+        <property>useRegion</property>
+        <required>0</required>
+    </formElement>	
+    <formElement>
+        <type>entry</type>
+        <label>Network region:</label>
+        <property>region</property>
+        <required>0</required>
+        <documentation>Creates the view tag in the specified network region. An error occurs if the region does not exist.</documentation>
+    </formElement>
+     <formElement>
+        <type>entry</type>
+        <label>Server storage location:</label>
+        <property>stgloc</property>
+        <required>0</required>
+        <documentation>Specifies a server storage location to hold the view storage directory. (You must have previously used mkstgloc to create the server storage location).</documentation>
+    </formElement>
+</editor>

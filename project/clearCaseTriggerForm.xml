@@ -1,0 +1,22 @@
+<editor>
+    <formElement>
+        <type>entry</type>
+        <label>View:</label>
+        <property>ClearCaseView</property>
+        <required>1</required>
+        <documentation>The name of a ClearCase dynamic view, used to query and label elements within a ClearCase VOB.</documentation>
+    </formElement>
+    <formElement>
+        <type>entry</type>
+        <label>Path:</label>
+        <property>ClearCasePath</property>
+        <required>1</required>
+        <documentation>The name of a path within the specified ClearCase view, used to access and label elements within a ClearCase VOB.</documentation>
+    </formElement>
+    <formElement>
+        <type>entry</type>
+        <label>Branch:</label>
+        <property>ClearCaseBranch</property>
+        <documentation>The name of a branch within the specified ClearCase path.</documentation>
+    </formElement>
+</editor>

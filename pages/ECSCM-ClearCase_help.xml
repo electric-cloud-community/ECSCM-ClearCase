@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org" />
+  <meta content="text/html; charset=us-ascii" http-equiv=
+  "content-type" />
+
+  <title>Electric Commander Plugin for ClearCase</title>
+  <link rel="stylesheet" href=
+  "../../plugins/@PLUGIN_KEY@/pluginhelp.css" type="text/css"
+  media="screen" />
+</head>
+
+<body>
+  <div class="help">
+    <h1>ClearCase</h1>
+
+    <p>Plugin Version @PLUGIN_VERSION@</p>
+    <hr style=
+    "margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;"
+    noshade="noshade" />
+    <!-- The tool description should answer these kinds of questions:
+                What is the tool itself is used for in the development
+                process? Who would use this tool? What is the general use-case or
+                problem that this tool solves? Look at the tool's documentation or
+                website(s) to get their own descriptions. Look at Wikipedia or other
+                outside websites. If there is a Hudson plugin, read their 
+                documentation for ideas, examples, etc. It's OK to copy word-for-word
+                only if appropriate, such as FOSS - but not commercial software.
+                -->
+
+    <p>The Rational ClearCase family consists of several software
+    tools for supporting software configuration management (SCM) of
+    source code and other software development assets. It is
+    developed by the Rational Software division of IBM. ClearCase
+    forms the base for configuration management for many large and
+    medium sized businesses and can handle projects with hundreds
+    or thousands of developers.</p>
+
+    <h2>ClearCase Links</h2>
+
+    <p>More information can be found at:</p>
+
+    <ul>
+      <li><a href=
+      "http://publib.boulder.ibm.com/infocenter/cchelp/v7r0m0/index.jsp">
+      ClearCase Technical Documentation</a></li>
+    </ul>
+
+    <h2>Electric Commander Integration to ClearCase</h2>
+    <!-- The integration description should answer the questions:
+                How deep does our integration go? Why should I care? What general
+                functionality does the plugin include? What functionality does
+                the plugin omit?
+                -->
+
+    <p>The ECSCM-ClearCase plugin allows ElectricCommander to
+    communicate with the Rational ClearCase source control server.
+    This plugin enables you to perform code checkout, preflight
+    actions, and continuous integration.</p>
+
+    <h2>Integrated Version</h2>
+
+    <p>This plugin was developed and tested with ClearCase version
+    7.0.</p>
+
+    <h1>Plugin Procedures</h1>
+
+    <p class="sectionnote">IMPORTANT: For all parameter
+    descriptions below, required parameters are shown in
+    <span class='required'>bold italics</span>.</p>
+
+    <div id="CreateConfiguration"><a name='CreateConfiguration' id=
+    "CreateConfiguration"></a>
+
+    <h3>Plugin Configuration</h3>
+    <!-- If the plugin has separate configurations then include this section,
+                        otherwise omit this whole section. We don't need to have a configuration
+                        section that just says "There is no configuration for this plugin."
+                        -->
+
+    <p>Plugin configurations are sets of parameters that apply
+    across some or all of the plugin's procedures. They are
+    intended to reduce repetition of common values, create
+    predefined sets of parameters for end users, and to securely
+    store credentials where needed. Each configuration is given a
+    unique name that is entered in designated parameters on
+    procedures that use them.<br />
+    Plugin configurations are created by going to the Electric
+    Commander "Administration" tab, then to the "Plugins" sub-tab.
+    On the right side of the line for the specific plugin, there is
+    a "Configure" link which will open the Configuration page.</p>
+    <!-- For all parameters, the parameter name should be *exactly* the same as it appears in the
+                        Parameter Panel, and the first sentence(s) of the description should be
+                        the same as the tooltip (if there is one). After that, the parameter
+                        description can go into greater detail about the parameter including
+                        valid value ranges and examples.
+                        -->
+
+    <p>To enable Commander to communicate with your ClearCase tool,
+    create a ClearCase configuration, supplying the following
+    information:</p>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class='required'>Configuration name</td>
+
+          <td>Provide a unique name for the configuration, keeping
+          in mind that you may need to create additional
+          configurations over time. (Required)</td>
+        </tr>
+
+        <tr>
+          <td>Description</td>
+
+          <td>You can supply a text description for your reference
+          only. Commander does not use this information.</td>
+        </tr>
+      </tbody>
+    </table><img src=
+    "../../plugins/@PLUGIN_KEY@/images/Config.png" /></div>
+
+    <div id="CheckoutCode"><a name="CheckoutCode" id=
+    "CheckoutCode"></a>
+
+    <h3>CheckoutCode</h3>
+
+    <p>Downloads a working copy of the source tree to the agent
+    machine. This will set the client workspace and perform a sync
+    command in the desired destination.</p>
+
+    <table class='grid'>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="required">Destination directory</td>
+
+          <td>A path relative to the job's workspace, where the
+          source tree will be created. (Required)</td>
+        </tr>
+
+        <tr>
+          <td class="required">Configuration specification file
+          name</td>
+
+          <td>The path to a ClearCase configuration specification
+          file. A config spec is the mechanism that a ClearCase
+          View determines what versions of an element that the user
+          accesses. (Required)</td>
+        </tr>
+
+        <tr>
+          <td>Delete view</td>
+
+          <td>Delete the view after checkout.</td>
+        </tr>
+
+        <tr>
+          <td>Create network region</td>
+
+          <td>If checked, create a network region using the
+          '-region' param. (If you provided a region name, you must
+          select this checkbox, otherwise the plugin will ignore
+          the parameter and issue a warning).</td>
+        </tr>
+
+        <tr>
+          <td>Network region</td>
+
+          <td>Creates the view tag in the specified network region.
+          An error occurs if the region does not exist.</td>
+        </tr>
+
+        <tr>
+          <td>Server storage location</td>
+
+          <td>Specifies a server storage location to hold the view
+          storage directory. (You must have previously used
+          mkstgloc to create the server storage location).</td>
+        </tr>
+      </tbody>
+    </table><img src=
+    "../../plugins/@PLUGIN_KEY@/images/checkout-2.png" alt=
+    "Checkout Form" /></div>
+
+    <div id="getSCMTag"><a name="getSCMTag" id="getSCMTag"></a>
+
+    <h3>Sentry Schedule</h3>
+
+    <p>This procedure is used for Continuous Integration. This will
+    monitor the repository to discover whether something changed,
+    and trigger a preconfugured procedure.</p>
+
+    <table class='grid'>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="required">View</td>
+
+          <td>The name of a ClearCase dynamic view, used to query
+          and label elements within a ClearCase VOB.
+          (Required)</td>
+        </tr>
+
+        <tr>
+          <td class="required">Path</td>
+
+          <td>The name of a path within the specified ClearCase
+          view, used to access and label elements within a
+          ClearCase VOB. (Required)</td>
+        </tr>
+
+        <tr>
+          <td class="required">Branch</td>
+
+          <td>The name of a branch within the specified ClearCase
+          path. (Required)</td>
+        </tr>
+
+        <tr>
+          <td>Quiet time minutes</td>
+
+          <td>The number of minutes of no check-in activity
+          required before launching the procedure.</td>
+        </tr>
+
+        <tr>
+          <td>Enabled for Electric Sentry</td>
+
+          <td>Enable this schedule for ElectricSentry.</td>
+        </tr>
+      </tbody>
+    </table><img src="../../plugins/@PLUGIN_KEY@/images/sentry.png"
+    alt="Sentry Form" /></div>
+
+    <div id="Preflight"><a name="Preflight" id="Preflight"></a>
+
+    <h3>Preflight (agent side)</h3>
+
+    <p>This will excecute the agent side of the preflight.</p>
+
+    <table class='grid'>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="required">Configuration</td>
+
+          <td>Provide the name of the saved SCM configuration.
+          (Required)</td>
+        </tr>
+
+        <tr>
+          <td class="required">Destination Directory</td>
+
+          <td>A path relative to the job's workspace, where the
+          source tree will be created. (Required)</td>
+        </tr>
+      </tbody>
+    </table><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight.png" alt=
+    "Extract Preflight Sources Form" /></div>
+
+    <div id="cpf_driver">
+      <a name="cpf_driver" id="cpf_driver"></a>
+
+      <h3>Preflight (client side)</h3>
+
+      <p>This will excecute the client part of the preflight.</p>
+
+      <p>This parameters can be set in the .preflight file, or
+      passed directly to the ecclientpreflight tool.</p>
+
+      <table class='grid'>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+
+            <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="required">path</td>
+
+            <td>A path relative to the job's workspace, where the
+            source tree will be created. (Required)</td>
+          </tr>
+
+          <tr>
+            <td class="required">winCSpecPath</td>
+
+            <td>The path to a ClearCase configuration specification
+            file. A config spec is the mechanism that a ClearCase
+            View determines what versions of an element that the
+            user accesses. (Required)</td>
+          </tr>
+        </tbody>
+      </table>
+      <pre>
+                       
+<br />&lt;?xml version="1.0" encoding="utf-8"?&gt;<br />&lt;data&gt;<br />&lt;server&gt;<br />&lt;userName&gt;rsanchez&lt;/userName&gt;<br />&lt;hostName&gt;chronic4;/hostName&gt;<br />&lt;/server&gt;<br />&lt;procedure&gt;<br />&lt;projectName&gt;ClearCase&lt;/projectName&gt;<br />&lt;procedureName&gt;preflight&lt;/procedureName&gt;<br />&lt;jobTimeout&gt;7200&lt;/jobTimeout&gt;<br />&lt;/procedure&gt;<br />&lt;scm&gt;<br />&lt;type&gt;clearcase&lt;/type&gt;<br />&lt;path&gt;c:\test\dest1&lt;/path&gt;<br />&lt;winCSpecPath&gt;c:\testspec\spec1.txt&lt;/winCSpecPath&gt;<br />&lt;/scm&gt;<br />&lt;/data&gt;<br />           
+            
+</pre>
+
+      <p>Please notice that the parameters inside the scm fragment,
+      are the same as the Preflight client side parameters. You can
+      include the most common parameters in the file to avoid
+      typing them all the time.</p><a href=
+      "../../plugins/@PLUGIN_KEY@/sample.preflight">Download Sample
+      Preflight file</a>
+    </div>
+
+    <h1>Examples and Use Cases</h1>
+
+    <h2>Configure a Checkout</h2>
+
+    <p>In the "Procedure Details" where the steps are created, in
+    the "New Step" section, select the plugin link and then search
+    "ClearCase - Checkout" and select it from the
+    list.</p><img src="../../plugins/@PLUGIN_KEY@/images/checkout-1.png"
+    alt="Create a checkout step" />
+
+    <p>Fill the form, in this example we are using a configuration
+    called "ClearCase" and we are going to checkout a repository
+    from a ClearCase server machine.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/checkout-2.png" alt=
+    "Fill the form" />
+
+    <p>The procedure now should look like this one, not you can run
+    it</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/checkout-3.png" alt=
+    "The procedure is ready to run." />
+
+    <p>If everything was properly set now you shoud see something
+    like this.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/checkout-4.png" alt=
+    "The procedure result." />
+
+    <p>If you see everything green, the procedure worked fine, so
+    you can now take a look at the logs. If you click on the log,
+    for the CheckOutMethod subprocedure "runMethod", you will see
+    something like this.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/checkout-5.png" alt=
+    "The procedure log." />
+
+    <h2>Preflight</h2>
+
+    <h3>Configuring the preflight</h3>
+
+    <p>In the "Procedure Details" where the steps are created, in
+    the "New Step" section, select the plugin link and then search
+    "ECSCM-ClearCase - Preflight" and select it from the
+    list.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight1.png" alt="" />
+
+    <p>Provide the ClearCase configuration that you want to use, we
+    chose ClearCaseConfig. Select a destination
+    directory.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight.png" alt="" />
+
+    <p>The procedure should look like this.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight-3.png" alt="" />
+
+    <h3>Running the preflight</h3>
+
+    <p>In order to run a preflight we should make changes to some
+    files.<br />
+    In this example we used a <a href=
+    "../../plugins/@PLUGIN_KEY@/sample.preflight">sample.preflight</a>
+    file that ecclientpreflight will read in order to read the
+    values in it and execute the procedure at commander.</p>
+
+    <p>Once we have the preflight file ready we just need to call
+    the "ecclientpreflight" tool from a console.<br />
+    You will see how it copies all the changed files to the server,
+    and lauches the preflight procedure that we created
+    earlier.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight-4.png" alt="" />
+
+    <p>If you go to the commander jobs tab, you will see our
+    recently launched job.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/preflight-5.png" alt="" />
+
+    <h2>Configuring a sentry schedule Form</h2>
+
+    <p>In the project, select the "schedules" tab, then in the
+    pop-up select the "SCM" type.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry1.png" alt="" />
+
+    <p>Select an step name, in this case we used
+    "Components-sentry", also select a ClearCase configuration.
+    Then you should select the procedure that will be run when the
+    sentry is triggered. In this case we chose the project "CVS"
+    and the procedure name inside the project called
+    "runWithSentry", this procedure just echoes a simple "Hello
+    world" message</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry.png" alt="" />
+
+    <p>After that, a new form will be shown where you should type
+    our ClearCase view, path and branch.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry.png" alt="" />
+
+    <p>The schedule should look like this.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry-4.png" alt="" />
+
+    <p>The sentry will detect new changes and execute the
+    runWithSentry procedure, in our case it just prints a "Hello
+    World".</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry-5.png" alt="" />
+
+    <p>The runWithSentry job, should be visible now from the jobs
+    tab.</p><img src=
+    "../../plugins/@PLUGIN_KEY@/images/sentry-6.png" alt="" />
+
+    <h1>Release Notes</h1>
+
+    <h2>@PLUGIN_KEY@ 2.0.2</h2>
+
+    <ul>
+      <li>Step chooser name cleanup</li>
+    </ul>
+
+    <h2>@PLUGIN_KEY@ 2.0.1</h2>
+
+    <ul>
+      <li>Improves to the xml parameter panels.</li>
+
+      <li>New help page format.</li>
+
+      <li>Included the Preflight step.</li>
+    </ul>
+
+    <h2>@PLUGIN_KEY@ 1.2.1</h2>
+
+    <ul>
+      <li>Checkout using custom region or stgloc.</li>
+
+      <li>Multi-VOB preflight support.</li>
+    </ul>
+
+    <h2>@PLUGIN_KEY@ 1.1.0</h2>
+
+    <ul>
+      <li>SCM features - Sentry.</li>
+
+      <li>SCM features - Checkout.</li>
+
+      <li>SCM features - Preflight.</li>
+    </ul>
+  </div>
+</body>
+</html>

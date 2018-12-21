@@ -1,0 +1,7 @@
+<editor>
+    <formElement>
+        <type>textarea</type>
+        <label>Description:</label>
+        <property>description</property>
+    </formElement>
+</editor>
