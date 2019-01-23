@@ -7,6 +7,7 @@
     <author>Electric Cloud</author>
     <authorUrl>http://www.electric-cloud.com/support</authorUrl>
     <category>Source Code Management</category>
+    <ecSupportLevel>10</ecSupportLevel>
     <commander-version min="3.6"/>
     <depends min="1.1.0">ECSCM</depends>
     <help>ECSCM-ClearCase_help.xml</help>
