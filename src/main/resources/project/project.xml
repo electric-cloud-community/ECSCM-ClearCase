@@ -6,6 +6,12 @@
     <description>ClearCase SCM integration</description>
     <workspaceName></workspaceName>
     <propertySheet>
+      <!-- Improvement for ECPSCMCLEARCASE-30 -->
+      <property>
+        <propertyName>ec_icon</propertyName>
+        <value>images/icon-plugin.svg</value>
+      </property>
+      <!-- End of improvement for ECPSCMCLEARCASE-30 -->
       <property>
         <propertyName>ec_setup</propertyName>
         <value></value>
